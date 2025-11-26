@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Cadastro - Solar.Conecta</title>
+</head>
+<body>
+    <div class="wrap">
+        <form class="card" id="registerForm" method="post" novalidate>
+            <h1>Criar conta</h1>
+            <p class="lead">Preencha os dados para se cadastrar — tudo em verde.</p>
+
+            <label for="nome">Nome</label>
+            <input id="nome" name="nome" type="text" placeholder="Seu nome completo" required>
+
+            <label for="cpf">CPF</label>
+            <input id="cpf" name="cpf" type="text" inputmode="numeric" class="num" maxlength="14" placeholder="000.000.000-00" required>
+
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="seu@exemplo.com" required>
+
+            <div class="row">
+                <div class="half">
+                    <label for="senha">Senha</label>
+                    <input id="senha" name="senha" type="password" placeholder="Crie uma senha" required>
+                </div>
+                <div class="half">
+                    <label for="confirm">Confirmar senha</label>
+                    <input id="confirm" name="confirm" type="password" placeholder="Repita a senha" required>
+                </div>
+            </div>
+
+            <div style="display:flex;align-items:center;gap:8px;margin-top:4px">
+                <input id="terms" name="terms" type="checkbox" required>
+                <label for="terms" style="margin:0;">Aceito os termos e a política de privacidade</label>
+            </div>
+
+            <div id="error" class="error" role="alert" aria-live="polite" hidden></div>
+
+            <button class="btn" type="submit">Criar conta</button>
+
+            <div class="small">Já tem conta? <a href="../index.html" style="color:var(--green-700);text-decoration:none;font-weight:600">Entrar</a></div>
+            <div class="footer-note">Projeto criado por estudantes do ensino médio técnico em busca de inovação sustentável</div>
+        </form>
+    </div>
+</body>
+</html>

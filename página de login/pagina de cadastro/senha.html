@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Esqueci minha senha</title>
+    <style>
+        :root{
+            --green-800:#006837;
+            --green-600:#0b9b4a;
+            --green-400:#4cd07a;
+            --bg:#eaf8ef;
+            --card:#ffffff;
+        }
+        html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;}
+        body{
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            background:linear-gradient(180deg,var(--bg),#f3fff6);
+            padding:24px;
+        }
+        .container{
+            width:100%;
+            max-width:420px;
+            background:linear-gradient(180deg,var(--card),#f7fff5);
+            border-radius:12px;
+            box-shadow:0 8px 30px rgba(2,36,14,0.08);
+            padding:28px;
+            box-sizing:border-box;
+            border:1px solid rgba(5,80,30,0.06);
+        }
+        .brand{
+            display:flex;
+            gap:12px;
+            align-items:center;
+            margin-bottom:18px;
+        }
+        .logo{
+            width:46px;height:46px;border-radius:10px;
+            background:linear-gradient(135deg,var(--green-600),var(--green-400));
+            display:flex;align-items:center;justify-content:center;
+            color:#fff;font-weight:700;font-size:18px;box-shadow:0 4px 12px rgba(6,90,40,0.12);
+        }
+        h1{margin:0 0 8px 0;font-size:20px;color:var(--green-800);}
+        p.lead{margin:0 0 18px 0;color:#2f5c3f;font-size:14px;}
+        form{display:grid;gap:12px;}
+        label{font-size:12px;color:#235032;}
+        input[type="email"]{
+            width:100%;
+            padding:12px 14px;
+            border-radius:8px;
+            border:1px solid rgba(10,80,40,0.08);
+            box-shadow:inset 0 1px 0 rgba(255,255,255,0.6);
+            outline:none;
+            font-size:14px;
+        }
+        input[type="email"]:focus{
+            box-shadow:0 0 0 4px rgba(11,155,74,0.12);
+            border-color:var(--green-600);
+        }
+        .actions{display:flex;gap:10px;align-items:center;justify-content:space-between;margin-top:4px;}
+        button{
+            background:linear-gradient(90deg,var(--green-600),var(--green-400));
+            color:white;border:none;padding:10px 14px;border-radius:10px;font-weight:600;
+            cursor:pointer;box-shadow:0 6px 18px rgba(11,155,74,0.18);
+        }
+        button:disabled{opacity:0.6;cursor:default;box-shadow:none}
+        a.back{color:var(--green-800);text-decoration:none;font-size:13px;}
+        .note{font-size:12px;color:#2f5c3f}
+        .success{
+            display:none;
+            margin-top:12px;
+            padding:12px;border-radius:8px;background:linear-gradient(90deg,#e7fff0,#f3fff8);
+            border:1px solid rgba(12,110,50,0.08);color:var(--green-800);font-size:13px;
+        }
+        .error{color:#8b1f1f;font-size:13px}
+        footer{margin-top:14px;font-size:12px;color:#2f5c3f;text-align:center}
+        @media (max-width:420px){ .container{padding:20px} }
+    </style>
+</head>
+<body>
+    <main class="container" role="main" aria-labelledby="titulo">
+        <div class="brand">
+            <div class="logo" aria-hidden="true">SC</div>
+            <div>
+                <h1 id="titulo">Esqueci minha senha</h1>
+                <p class="lead">Digite o e-mail associado à sua conta. Enviaremos um link para redefinição.</p>
+            </div>
+        </div>
+
+        <form id="resetForm" novalidate>
+            <div>
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" placeholder="seu@exemplo.com" required autocomplete="email" />
+                <div id="err" class="error" role="status" aria-live="polite"></div>
+            </div>
+
+            <div class="actions">
+                <button id="sendBtn" type="submit">Enviar link de recuperação</button>
+                <a class="back" href="../index.html">Voltar ao login</a>
+            </div>
+
+            <div id="success" class="success" role="status" aria-live="polite"></div>
+        </form>
+
+        <footer>
+            Dica: verifique também a caixa de spam caso não receba o email em alguns minutos.
+        </footer>
+    </main>
+
+    <script>
+        (function(){
+            const form = document.getElementById('resetForm');
+            const email = document.getElementById('email');
+            const err = document.getElementById('err');
+            const success = document.getElementById('success');
+            const btn = document.getElementById('sendBtn');
+
+            function validateEmail(v){
+                return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+            }
+
+            form.addEventListener('submit', function(e){
+                e.preventDefault();
+                err.textContent = '';
+                success.style.display = 'none';
+
+                const val = email.value.trim();
+                if(!val){
+                    err.textContent = 'Por favor, insira seu email.';
+                    email.focus();
+                    return;
+                }
+                if(!validateEmail(val)){
+                    err.textContent = 'Formato de email inválido.';
+                    email.focus();
+                    return;
+                }
+                btn.disabled = true;
+                btn.textContent = 'Enviando...';
+
+                setTimeout(() => {
+                    btn.disabled = false;
+                    btn.textContent = 'Enviar link de recuperação';
+                    success.textContent = 'Pronto! Verifique seu email. Enviamos um link para redefinir sua senha.';
+                    success.style.display = 'block';
+                    form.reset();
+                }, 900);
+            });
+        })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solar Conecta Web</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="web-container">
+        <section class="screen active" id="home">
+            <div class="content-home">
+                <div class="logo-circle">
+                    <i class="fas fa-sun"></i>
+                </div>
+                <h2>SolarConecta</h2>
+                <p>Energia limpa ao alcance de todos.</p>
+                <button class="btn-primary" onclick="showScreen('dashboard')">
+                    Solar.Conecta &rarr;
+                </button>
+            </div>
+        </section>
+
+        <section class="screen" id="dashboard">
+
+            <div class="screen-header">
+                <button class="back-btn" onclick="showScreen('home')">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <h3>Dashboard</h3>
+            </div>
+
+            <div class="dashboard-content">
+
+                <div class="energy-widget">
+                    <p class="label">Energia</p>
+                    <p class="value-kwh">440 <span>kWh</span></p>
+                </div>
+
+                <div class="stats-row">
+                    <div>
+                        <p class="stat-value">120 <span>kWh</span></p>
+                        <p class="stat-label">Economia mensal</p>
+                    </div>
+                    <div>
+                        <p class="stat-value">R$ 24,50</p>
+                        <p class="stat-label">Economia por família</p>
+                    </div>
+                </div>
+
+                <div class="nav-grid desktop-grid">
+                    <button class="btn-grid green-light">Minha Energia</button>
+                    <button class="btn-grid green-dark" onclick="showScreen('credits')">Créditos Recebidos</button>
+                    <button class="btn-grid green-dark" onclick="showScreen('community')">Comunidade</button>
+                    <button class="btn-grid green-dark" onclick="showScreen('courses')">Cursos e Oportunidades</button>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="screen" id="credits">
+            <div class="screen-header">
+                <button class="back-btn" onclick="showScreen('dashboard')"><i class="fas fa-chevron-left"></i></button>
+                <h3>Créditos Recebidos</h3>
+            </div>
+
+            <div class="credits-content">
+                <div class="credit-display">
+                    <i class="fas fa-wallet"></i>
+                    <p class="credit-value">25,67 <span>kWh</span></p>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="screen" id="community">
+            <div class="screen-header">
+                <button class="back-btn" onclick="showScreen('dashboard')"><i class="fas fa-chevron-left"></i></button>
+                <h3>Comunidade</h3>
+            </div>
+
+            <div class="community-content">
+
+                <div class="section-box">
+                    <h4>Informações</h4>
+                    <ul>
+                        <li><i class="fas fa-wrench"></i> Manutenção</li>
+                        <li><i class="fas fa-cloud"></i> Clima</li>
+                        <li><i class="fas fa-chart-line"></i> Atualizações da usina solar</li>
+                    </ul>
+                </div>
+
+                <div class="section-box">
+                    <h4>Avisos</h4>
+                    <ul>
+                        <li><i class="fas fa-comment"></i> Menu</li>
+                        <li><i class="fas fa-hand-holding-usd"></i> Contas</li>
+                        <li><i class="fas fa-tag"></i> Referência</li>
+                    </ul>
+                </div>
+
+                <div class="section-box">
+                    <h4>Rankings</h4>
+                    <ul>
+                        <li><i class="fas fa-star"></i> Família Lima Lucas</li>
+                        <li><i class="fas fa-star"></i> Família Rocha</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="screen" id="courses">
+            <div class="screen-header">
+                <button class="back-btn" onclick="showScreen('dashboard')"><i class="fas fa-chevron-left"></i></button>
+                <h3>Cursos e Oportunidades</h3>
+            </div>
+
+            <div class="courses-content">
+
+                <div class="course-list">
+                    <div class="course-item">
+                        <i class="fas fa-question-circle"></i>
+                        <p>Dúvidas sobre a usina</p>
+                    </div>
+
+                    <div class="course-item">
+                        <i class="fas fa-tools"></i>
+                        <p>Mutirão de instalação</p>
+                    </div>
+
+                    <div class="course-item">
+                        <i class="fas fa-leaf"></i>
+                        <p>Escola Verde</p>
+                    </div>
+                </div>
+
+                <div class="section-box">
+                    <h4>Agenda</h4>
+                    <ul>
+                        <li><i class="fas fa-calendar-alt"></i> Manutenção da usina</li>
+                        <li><i class="fas fa-calendar-alt"></i> Curso de Instalação Solar</li>
+                    </ul>
+                </div>
+
+                <div class="section-box rankings-btn" onclick="showScreen('profile')">
+                    <h4>Rankings</h4>
+                    <p class="rank-name">Família Silva</p>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="screen" id="profile">
+            <div class="screen-header">
+                <button class="back-btn" onclick="showScreen('courses')"><i class="fas fa-chevron-left"></i></button>
+                <h3>Perfil</h3>
+            </div>
+
+            <div class="profile-content">
+
+                <div class="user-info">
+                    <div class="profile-pic"></div>
+                    <p class="user-name">Vandinha da Conceição</p>
+                    <p class="user-address">Rua da Esperança, 777</p>
+                </div>
+
+                <div class="profile-details">
+                    <p class="detail-label">Conta de energia</p>
+                    <p class="detail-value">123456789</p>
+
+                    <p class="detail-label">Famílias incluídas</p>
+                    <p class="detail-value">2</p>
+
+                    <p class="detail-label">Meta de economia</p>
+                    <p class="detail-value big-value">R$ 45,00</p>
+                </div>
+
+                <div class="ranking-label">
+                    <p>Ranking</p>
+                    <p class="ranking-stat">1000k</p>
+                </div>
+
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
